@@ -1,4 +1,4 @@
-module github.com/guilhermeonrails/api-go-gin
+module github.com/titi0001/golang-automated-delivery
 
 go 1.15
 

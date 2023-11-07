@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/guilhermeonrails/api-go-gin/controllers"
+	"github.com/titi0001/golang-automated-delivery/controllers"
 )
 
 func HandleRequest() {
