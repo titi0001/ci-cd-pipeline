@@ -11,35 +11,13 @@ on:
 
 jobs:
 
-  test-ubuntu:
-    runs-on: ubuntu-latest
+  test:
+
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         go_version: ['1.18', '1.17', '>=1.18']
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: ${{ matrix.go_version }}
-
-    - name: Build-DB
-      run: docker-compose build
-
-    - name: create-DB
-      run: docker-compose up -d
-      
-    - name: Test
-      run: go test -v main_test.go
-
-  test-windows:
-    needs: test-ubuntu
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        go_version: ['1.18', '1.17', '>=1.18']
+        os: ['ubuntu-latest', 'ubuntu-18.04']
 
     steps:
     - uses: actions/checkout@v3
@@ -59,7 +37,7 @@ jobs:
       run: go test -v main_test.go
 
   build:
-    needs: test-windows
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
