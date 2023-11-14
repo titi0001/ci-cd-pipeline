@@ -19,7 +19,7 @@ func ConectaComBancoDeDados() {
 
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatalf("Erro ao carregar .env", err)
+		log.Fatal("Erro ao carregar .env", err)
 		os.Exit(1)
 	}
 
