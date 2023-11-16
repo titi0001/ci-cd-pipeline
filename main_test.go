@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strconv"
-	"os"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -19,15 +18,6 @@ import (
 
 var ID int
 
-func TestSomething(t *testing.T) {
-
-	os.Setenv("HOST", "localhost")
-	os.Setenv("PORT", "5432")
-	os.Setenv("USERDB", "root")
-	os.Setenv("PASSWORD", "root")
-	os.Setenv("DBNAME", "root")
-
-} 
 
 
 func SetupDasRotasDeTeste() *gin.Engine {
