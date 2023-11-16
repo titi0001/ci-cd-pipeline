@@ -2,10 +2,12 @@ package database
 
 import (
 	"log"
-	// "os"
+	"os"
+
 	"github.com/titi0001/golang-automated-delivery/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"github.com/joho/godotenv"
 )
 
 var (
@@ -15,8 +17,13 @@ var (
 
 func ConectaComBancoDeDados() {
 
-	stringDeConexao := "host=localhost user=root password=root dbname=root port=5432 sslmode=disable"
-	// stringDeConexao := "host="+os.Getenv("HOST")+" user="+os.Getenv("USER")+" password="+os.Getenv("PASSWORD")+" dbname="+os.Getenv("DBNAME")+"port=5432"+os.Getenv("PORT")+"sslmode=disable"
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Erro ao carregar .env", err)
+		os.Exit(1)
+	}
+
+	stringDeConexao := "host="+os.Getenv("HOST")+" user="+os.Getenv("USERDB")+" password="+os.Getenv("PASSWORD")+" dbname="+os.Getenv("DBNAME")+" port="+os.Getenv("PORT")+" sslmode=disable"
 
 	DB, err = gorm.Open(postgres.Open(stringDeConexao))
 	if err != nil {

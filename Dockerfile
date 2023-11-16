@@ -4,7 +4,7 @@ EXPOSE 8000
 
 ENV HOST=localhost 
 ENV PORT=5432
-ENV USER=root 
+ENV USERDB=root 
 ENV PASSWORD=root 
 ENV DBNAME=root
 
